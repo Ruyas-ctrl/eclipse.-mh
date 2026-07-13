@@ -3,121 +3,120 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eclipse by MH</title>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&amp;family=Playfair+Display:wght@700&amp;family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Eclipse by MH • Celestial Jewelry</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@700&amp;family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
   :root {
-    --cherry: #e11d48;
-    --lavender: #f3e8ff;
-    --deep: #3b1e5e;
+    --darkred: #8b1a2f;
+    --deepred: #4a0f1f;
+    --grey: #e5e5e5;
+    --lightgrey: #f8f8f8;
+    --accent: #c0263e;
   }
 
   * { margin:0; padding:0; box-sizing:border-box; }
   body {
     font-family: 'Manrope', sans-serif;
-    background: linear-gradient(180deg, var(--lavender) 0%, #ffe4f0 100%);
-    color: var(--deep);
+    background: linear-gradient(180deg, #1a0f12 0%, #2c1a20 100%);
+    color: #ddd;
     min-height: 100vh;
-    position: relative;
     overflow-x: hidden;
   }
 
   /* Background Stars & Moons */
-  body::before {
-    content: '';
+  .celestial-bg {
     position: fixed;
     top: 0; left: 0; width: 100%; height: 100%;
     background: 
-      radial-gradient(circle at 15% 20%, rgba(227,29,72,0.08) 0%, transparent 40%),
-      radial-gradient(circle at 85% 35%, rgba(59,30,94,0.1) 0%, transparent 50%);
+      radial-gradient(circle at 20% 30%, rgba(194,38,62,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(139,26,47,0.15) 0%, transparent 60%);
+    pointer-events: none;
     z-index: -1;
   }
 
   .floating {
     position: absolute;
-    font-size: 2rem;
-    opacity: 0.15;
-    animation: float 25s infinite linear;
+    color: #c0263e;
+    font-size: 1.8rem;
+    opacity: 0.2;
+    animation: drift 30s infinite linear;
     z-index: -1;
   }
 
-  @keyframes float {
-    0% { transform: translate(0, 0) rotate(0deg); }
-    100% { transform: translate(30px, -80px) rotate(25deg); }
+  @keyframes drift {
+    0% { transform: translateY(0) rotate(0deg); }
+    100% { transform: translateY(-120px) rotate(30deg); }
   }
 
   header {
-    background: rgba(255,255,255,0.95);
-    backdrop-filter: blur(15px);
+    background: rgba(26,15,18,0.95);
+    backdrop-filter: blur(12px);
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom: 1px solid #e11d48;
+    border-bottom: 1px solid #4a0f1f;
   }
 
   .nav-row {
     max-width: 1280px;
     margin: 0 auto;
-    padding: 16px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 16px 20px;
   }
 
   .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 2.1rem;
-    color: var(--cherry);
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: #c0263e;
     font-weight: 700;
-    letter-spacing: -2px;
+    letter-spacing: -1px;
   }
 
-  .nav-left { display: flex; align-items: center; gap: 12px; }
-  .nav-right { display: flex; align-items: center; gap: 12px; }
-
   .icon-btn {
-    width: 50px; height: 50px;
-    border: 3px solid var(--cherry);
-    color: var(--cherry);
-    background: white;
+    width: 52px; height: 52px;
+    background: #2c1a20;
+    border: 2px solid #c0263e;
+    color: #ddd;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.3s;
   }
   .icon-btn:hover {
-    background: var(--cherry);
+    background: #c0263e;
     color: white;
-    transform: scale(1.12);
+    transform: scale(1.1);
   }
 
   .hero {
     text-align: center;
-    padding: 80px 20px 50px;
+    padding: 90px 20px 60px;
   }
   .hero h1 {
     font-family: 'Fraunces', serif;
-    font-size: 3.2rem;
-    color: var(--deep);
-    line-height: 1.1;
+    font-size: 3.1rem;
+    color: #f1c4c4;
+    text-shadow: 0 0 30px #c0263e;
   }
 
   .hero-img {
-    max-width: 360px;
+    max-width: 380px;
     width: 100%;
     border-radius: 50%;
     border: 22px solid #111;
-    margin: 40px auto 0;
-    box-shadow: 0 30px 60px rgba(59,30,94,0.35);
+    box-shadow: 0 30px 70px rgba(194,38,62,0.4);
+    margin: 40px auto;
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 28px;
     padding: 20px;
     max-width: 1280px;
@@ -125,10 +124,10 @@
   }
 
   .card {
-    background: white;
-    border-radius: 28px;
+    background: #2c1a20;
+    border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 15px 40px rgba(225,29,72,0.18);
+    border: 1px solid #4a0f1f;
   }
 
   .card-media {
@@ -138,8 +137,7 @@
   .card-media img {
     position: absolute;
     inset: 0;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
     object-fit: cover;
   }
 
@@ -147,56 +145,57 @@
   .card-media::after {
     content: '';
     position: absolute;
-    inset: 12px;
-    border: 9px solid #111;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #3b1e5e;
+    inset: 14px;
+    border: 8px solid #111;
+    border-radius: 16px;
+    box-shadow: 0 0 25px #c0263e;
     z-index: 2;
   }
 
   .card-body {
-    padding: 18px;
+    padding: 20px;
     text-align: center;
   }
 
   .add-btn {
     width: 100%;
-    padding: 14px;
-    background: var(--cherry);
+    padding: 15px;
+    background: var(--accent);
     color: white;
     border: none;
     border-radius: 50px;
     font-weight: 700;
+    margin-top: 12px;
     cursor: pointer;
-    margin-top: 10px;
   }
 
   .cod {
-    color: #6b4e8a;
+    margin-top: 8px;
     font-size: 0.85rem;
-    margin-top: 6px;
+    color: #c4a1a1;
   }
 
   /* Drawer */
-  .scrim, .drawer {
-    position: fixed;
-    transition: all 0.4s ease;
-  }
   .scrim {
+    position: fixed;
     inset: 0;
-    background: rgba(59,30,94,0.7);
+    background: rgba(26,15,18,0.85);
     opacity: 0;
     pointer-events: none;
     z-index: 200;
+    transition: 0.4s;
   }
   .scrim.show { opacity: 1; pointer-events: auto; }
 
   .drawer {
+    position: fixed;
     top: 0; bottom: 0;
-    width: min(340px, 88vw);
-    background: white;
-    right: -100%;
+    width: min(340px, 90vw);
+    background: #1a0f12;
+    color: #ddd;
     z-index: 300;
+    right: -100%;
+    transition: 0.4s ease;
     padding: 30px 20px;
   }
   .drawer.open { right: 0; }
@@ -204,9 +203,10 @@
 </head>
 <body>
 
+<div class="celestial-bg"></div>
 <div class="floating" style="top:15%;left:10%;">🌙</div>
-<div class="floating" style="top:45%;left:80%;animation-delay:4s;">✦</div>
-<div class="floating" style="top:75%;left:20%;animation-delay:8s;">⭐</div>
+<div class="floating" style="top:40%;left:80%;animation-delay:5s;">⭐</div>
+<div class="floating" style="top:70%;left:25%;animation-delay:9s;">✦</div>
 
 <header>
   <div class="nav-row">
@@ -219,8 +219,8 @@
 </header>
 
 <section class="hero">
-  <h1>Moonlit Jewelry</h1>
-  <p style="margin-top:12px; color:#6b4e8a;">Handmade with love in Pakistan</p>
+  <h1>Elegance in the Dark</h1>
+  <p style="margin-top:16px; color:#c4a1a1;">Handcrafted celestial jewelry</p>
   <img src="https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=900" 
        class="hero-img" alt="Hero">
 </section>
@@ -229,15 +229,14 @@
 
 <!-- Menu Drawer -->
 <div class="drawer" id="menuDrawer">
-  <h2 style="color:var(--cherry);margin-bottom:24px;">Collections</h2>
-  <div style="line-height:2.8; font-size:1.15rem;">
+  <h2 style="color:#c0263e;margin-bottom:24px;">Collections</h2>
+  <div style="line-height:2.8;font-size:1.1rem;">
     <div>🌙 Arm Cuffs</div>
     <div>⭐ Bracelets</div>
     <div>✨ Necklaces</div>
     <div>🌹 Earrings</div>
     <div>🪐 Hair Accessories</div>
     <div>🌌 Bag Charms</div>
-    <div>🔑 Keychains</div>
   </div>
 </div>
 
@@ -261,28 +260,28 @@ function renderProducts() {
       </div>
       <div class="card-body">
         <h3>${p.name}</h3>
-        <p style="color:var(--cherry);font-weight:700;margin:8px 0;">Rs. ${p.price}</p>
+        <p style="color:#c0263e;font-weight:700;margin:10px 0;">Rs. ${p.price}</p>
         <button class="add-btn" onclick="addToCart(${p.id})">Add to Cart</button>
-        <div class="cod">💖 Cash on Delivery Available</div>
+        <div class="cod">💳 Cash on Delivery Available</div>
       </div>
     </div>
   `).join('');
 }
 
-window.addToCart = (id) => {
+window.addToCart = function(id) {
   const item = products.find(p => p.id === id);
   cart.push(item);
-  alert(item.name + " added to cart 💕");
+  alert(item.name + " added to cart ✨");
 };
 
 document.getElementById('cartBtn').addEventListener('click', () => {
-  if(cart.length === 0) return alert("Cart is empty 🌙");
+  if (cart.length === 0) return alert("Your cart is empty.");
   
-  let text = "Hello Eclipse by MH!\n\nMy order:\n";
-  cart.forEach(item => text += `- \( {item.name} (Rs. \){item.price})\n`);
-  text += "\nPlease confirm Cash on Delivery.";
+  let msg = "Hi Eclipse by MH!\n\nI would like to order:\n";
+  cart.forEach(item => msg += `- ${item.name} (Rs. ${item.price})\n`);
+  msg += "\nCash on Delivery please.";
   
-  window.open(`https://wa.me/923425858425?text=${encodeURIComponent(text)}`, '_blank');
+  window.open(`https://wa.me/923425858425?text=${encodeURIComponent(msg)}`, '_blank');
 });
 
 const menuBtn = document.getElementById('menuBtn');
