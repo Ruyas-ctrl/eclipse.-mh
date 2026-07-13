@@ -3,127 +3,346 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Eclipse by MH — Handmade Jewelry</title>
+<title>Eclipse by MH — Celestial Jewelry</title>
+<meta name="description" content="Handmade celestial jewelry with stars and moons. Dark elegance.">
 
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@400;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@400;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --purple:#5e1b8c;
-    --pink:#ff4da6;
-    --grad: linear-gradient(135deg, var(--purple) 0%, var(--pink) 100%);
+    --dark-purple: #1a0b2e;
+    --deep-red: #4a1428;
+    --accent-purple: #9f2dff;
+    --accent-pink: #ff2d95;
+    --star-gold: #f4d35e;
   }
 
-  body{
-    font-family:'Manrope',sans-serif;
-    background:#fff0f7;
-    margin:0;
-    padding:0;
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Manrope', sans-serif;
+    background: linear-gradient(180deg, #1a0b2e 0%, #2a0f3d 100%);
+    color: #e0c4ff;
+    overflow-x: hidden;
+    min-height: 100vh;
+    position: relative;
   }
 
-  .hero-photo, .product-img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    border-radius:16px;
-    border: 12px solid transparent;
-    background: linear-gradient(white,white) padding-box, var(--grad) border-box;
-    box-shadow: 0 20px 40px rgba(94,27,140,0.3);
+  /* Celestial Background */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: 
+      radial-gradient(circle at 20% 30%, rgba(244,211,94,0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(255,45,149,0.12) 0%, transparent 50%),
+      radial-gradient(circle at 40% 80%, rgba(159,45,255,0.1) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .star {
+    position: absolute;
+    color: var(--star-gold);
+    font-size: 18px;
+    opacity: 0.6;
+    animation: twinkle 4s infinite alternate;
+    z-index: -1;
+  }
+
+  @keyframes twinkle {
+    0% { opacity: 0.4; transform: scale(0.8); }
+    100% { opacity: 0.9; transform: scale(1.2); }
+  }
+
+  header {
+    background: rgba(26,11,46,0.95);
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #4a1428;
+  }
+
+  .nav-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 16px 20px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 4vw, 2.2rem);
+    color: #f4d35e;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-shadow: 0 0 20px #ff2d95;
+  }
+
+  .moon {
+    width: 22px; height: 22px;
+    background: linear-gradient(45deg, #f4d35e, #ff9ed6);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 20px #ff2d95;
+  }
+
+  .icon-btn {
+    width: 48px; height: 48px;
+    background: rgba(74,20,40,0.6);
+    border: 2px solid #9f2dff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f4d35e;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  .icon-btn:hover {
+    background: #9f2dff;
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  .hero {
+    text-align: center;
+    padding: 100px 20px 60px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    color: #f4d35e;
+    text-shadow: 0 0 30px #ff2d95;
+    margin-bottom: 16px;
+  }
+
+  .hero-photo-container {
+    max-width: 520px;
+    margin: 40px auto;
+    position: relative;
+  }
+
+  .hero-photo {
+    width: 100%;
+    border-radius: 50%;
+    border: 18px solid #1a0b2e;
+    box-shadow: 0 0 60px rgba(159,45,255,0.6),
+                0 0 120px rgba(255,45,149,0.4);
   }
 
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 40px 20px;
+    max-width: 1280px;
+    margin: 0 auto;
   }
 
   .card {
-    background: white;
+    background: rgba(42,15,61,0.85);
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    border: 2px solid #4a1428;
+    transition: all 0.4s;
+  }
+
+  .card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 60px rgba(159,45,255,0.4);
   }
 
   .card-media {
     position: relative;
     padding-top: 100%;
+    background: #1a0b2e;
   }
 
   .card-media img {
     position: absolute;
     top: 0; left: 0;
     width: 100%; height: 100%;
+    object-fit: cover;
   }
+
+  /* Black Frame with Glow */
+  .card-media::after {
+    content: '';
+    position: absolute;
+    inset: 12px;
+    border: 6px solid #111;
+    border-radius: 12px;
+    box-shadow: 0 0 0 4px #9f2dff;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .card-body {
+    padding: 18px;
+    text-align: center;
+  }
+
+  .add-btn {
+    margin-top: 12px;
+    width: 100%;
+    padding: 14px;
+    background: linear-gradient(90deg, #9f2dff, #ff2d95);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .drawer {
+    position: fixed;
+    top: 0; bottom: 0;
+    width: min(340px, 90vw);
+    background: #1a0b2e;
+    color: #e0c4ff;
+    z-index: 200;
+    transform: translateX(-100%);
+    transition: transform 0.5s ease;
+    padding: 20px;
+  }
+  .drawer.open { transform: translateX(0); }
+
+  .scrim {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 150;
+    transition: opacity 0.4s;
+  }
+  .scrim.show { opacity: 1; pointer-events: auto; }
 </style>
 </head>
 <body>
 
-<h1 style="text-align:center; padding:30px 20px; font-family:'Fraunces',serif; color:#5e1b8c;">
-  Eclipse by MH
-</h1>
+<!-- Stars Background -->
+<div class="star" style="top:10%;left:8%;">✦</div>
+<div class="star" style="top:25%;left:85%;">🌙</div>
+<div class="star" style="top:45%;left:15%;">✧</div>
+<div class="star" style="top:65%;left:78%;">⭐</div>
+<div class="star" style="top:82%;left:22%;">🌟</div>
 
-<!-- Hero -->
-<div style="max-width:800px; margin:40px auto; padding:0 20px;">
-  <div class="card">
-    <div class="card-media">
-      <img src="https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=1000" 
-           alt="Hero" class="hero-photo" onerror="this.src='https://picsum.photos/id/1015/800/800'">
-    </div>
+<header>
+  <div class="nav-row">
+    <button class="icon-btn" id="menuBtn">☰</button>
+    <div class="wordmark">ECLIPSE <span class="moon"></span> <span style="font-size:0.6em;color:#ff9ed6;">by MH</span></div>
+    <button class="icon-btn" id="cartBtn">🛍️ <span id="cartCount" style="font-size:0.8rem;vertical-align:super;">0</span></button>
   </div>
+</header>
+
+<!-- Menu Drawer -->
+<div class="drawer" id="menuDrawer">
+  <h2 style="color:#f4d35e;margin-bottom:20px;">Menu</h2>
+  <ul style="list-style:none;">
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🌙 Home</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">⭐ Arm Cuffs</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🌟 Bracelets</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">✨ Necklaces</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🌹 Earrings</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🪐 Hair Accessories</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🌌 Bag Pins & Charms</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">🔑 Keychains</li>
+    <li style="padding:12px 0;border-bottom:1px solid #4a1428;">📖 Bookmarks</li>
+    <li style="padding:12px 0;">💌 Contact Us</li>
+  </ul>
 </div>
 
-<!-- Products -->
-<div class="grid" id="productGrid"></div>
+<div class="scrim" id="scrim"></div>
+
+<main>
+  <section class="hero">
+    <h1>Where Stars Meet Style</h1>
+    <p style="font-size:1.2rem;max-width:500px;margin:0 auto 30px;">Handcrafted celestial jewelry in deep purples and passionate reds</p>
+    
+    <div class="hero-photo-container">
+      <img src="https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=1000" 
+           alt="Celestial Jewelry" class="hero-photo"
+           onerror="this.src='https://picsum.photos/id/1015/800/800'">
+    </div>
+  </section>
+
+  <section>
+    <h2 style="text-align:center;margin:40px 0 20px;color:#f4d35e;font-size:2.2rem;">Featured Pieces</h2>
+    <div class="grid" id="productGrid"></div>
+  </section>
+</main>
 
 <script>
 const products = [
-  {
-    name: "Orbit Armcuff",
-    price: 1000,
-    img: "https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=800"
-  },
-  {
-    name: "Lily Butterfly Armcuff",
-    price: 1600,
-    img: "https://eclipsebyms.com/cdn/shop/files/C616A6F5-8FA8-4196-AA2C-17EA030B84B9.jpg?v=1782810113&width=800"
-  },
-  {
-    name: "Pink Crystal Butterfly",
-    price: 1200,
-    img: "https://eclipsebyms.com/cdn/shop/files/93B3D48E-F2D3-4262-BDC9-56F63A98A599.jpg?v=1772128560&width=800"
-  },
-  {
-    name: "Starlight Necklace",
-    price: 1850,
-    img: "https://eclipsebyms.com/cdn/shop/collections/20ed6f43053e7ac16d71eccdd06d6ff3_e19af08e-3eee-4c22-8f66-eb473d0816bb.jpg?v=1770193026&width=800"
-  }
+  { name: "Orbit Armcuff", price: 1250, img: "https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=800" },
+  { name: "Lily Butterfly Armcuff", price: 1650, img: "https://eclipsebyms.com/cdn/shop/files/C616A6F5-8FA8-4196-AA2C-17EA030B84B9.jpg?v=1782810113&width=800" },
+  { name: "Pink Crystal Butterfly", price: 1350, img: "https://eclipsebyms.com/cdn/shop/files/93B3D48E-F2D3-4262-BDC9-56F63A98A599.jpg?v=1772128560&width=800" },
+  { name: "Starlight Necklace", price: 1950, img: "https://eclipsebyms.com/cdn/shop/collections/20ed6f43053e7ac16d71eccdd06d6ff3_e19af08e-3eee-4c22-8f66-eb473d0816bb.jpg?v=1770193026&width=800" },
+  { name: "Lunar Hoops", price: 980, img: "https://picsum.photos/id/201/800/800" },
+  { name: "Celestial Hair Pin", price: 850, img: "https://picsum.photos/id/314/800/800" }
 ];
 
-const grid = document.getElementById('productGrid');
+let cart = [];
 
-products.forEach(product => {
-  const cardHTML = `
-    <div class="card">
+function renderProducts() {
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = '';
+  
+  products.forEach((p, index) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
       <div class="card-media">
-        <img src="${product.img}" 
-             alt="${product.name}" 
-             class="product-img"
-             onerror="this.src='https://picsum.photos/id/${Math.floor(Math.random()*100)+100}/600/600'; this.onerror=null;">
+        <img src="\( {p.img}" alt=" \){p.name}" 
+             onerror="this.src='https://picsum.photos/id/${100 + index}/800/800'">
       </div>
-      <div style="padding:16px; text-align:center;">
-        <h3 style="margin:8px 0; color:#2c0f4a;">${product.name}</h3>
-        <p style="color:#ff4da6; font-weight:bold;">Rs. ${product.price}</p>
-        <button onclick="alert('${product.name} added to cart! 🌙')" 
-                style="margin-top:12px; padding:12px 24px; background:linear-gradient(135deg,#5e1b8c,#ff4da6); color:white; border:none; border-radius:50px; cursor:pointer;">
-          Add to Cart
-        </button>
+      <div class="card-body">
+        <h3 style="color:#f4d35e;margin-bottom:8px;">${p.name}</h3>
+        <p style="color:#ff9ed6;font-weight:700;">Rs. ${p.price}</p>
+        <button class="add-btn" data-name="${p.name}">Add to Cart 🌙</button>
       </div>
-    </div>
-  `;
-  grid.innerHTML += cardHTML;
-});
-</script>
+    `;
+    grid.appendChild(card);
+  });
+}
 
+// Event Listeners
+document.addEventListener('click', (e) => {
+  if (e.target.classList.contains('add-btn')) {
+    const name = e.target.getAttribute('data-name');
+    cart.push(name);
+    document.getElementById('cartCount').textContent = cart.length;
+    alert(`${name} added to your cart ✨`);
+  }
+});
+
+const menuBtn = document.getElementById('menuBtn');
+const menuDrawer = document.getElementById('menuDrawer');
+const scrim = document.getElementById('scrim');
+
+menuBtn.addEventListener('click', () => {
+  menuDrawer.classList.add('open');
+  scrim.classList.add('show');
+});
+
+scrim.addEventListener('click', () => {
+  menuDrawer.classList.remove('open');
+  scrim.classList.remove('show');
+});
+
+document.getElementById('cartBtn').addEventListener('click', () => {
+  alert(`Your cart has ${cart.length} beautiful pieces.\n\nReady for WhatsApp checkout on +92 342 5858425`);
+});
+
+// Initialize
+renderProducts();
+</script>
 </body>
 </html>
