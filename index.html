@@ -11,7 +11,7 @@
     --darkred: #5c1a2b;
     --deepred: #3f1320;
     --grey: #d1c7c2;
-    --lightgrey: #f0e9e6;
+    --accent: #c8a0a8;
     --bg: #1c1618;
   }
 
@@ -20,13 +20,12 @@
     font-family: 'Inter', sans-serif;
     background: var(--bg);
     color: #e8d9d4;
-    line-height: 1.6;
   }
 
   header {
     position: sticky;
     top: 0;
-    background: rgba(28,22,24,0.95);
+    background: rgba(28,22,24,0.96);
     backdrop-filter: blur(12px);
     z-index: 100;
     border-bottom: 1px solid #3f1320;
@@ -43,53 +42,51 @@
 
   .logo {
     font-family: 'Fraunces', serif;
-    font-size: 1.85rem;
-    color: #c8a0a8;
+    font-size: 1.9rem;
+    color: var(--accent);
     letter-spacing: -1px;
   }
 
-  .nav-actions {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-
-  .icon {
-    font-size: 1.5rem;
+  .nav-actions button {
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: #e8d9d4;
     cursor: pointer;
     padding: 8px;
-    transition: 0.3s;
+    transition: transform 0.3s ease;
   }
-  .icon:hover { color: #c8a0a8; }
+  .nav-actions button:hover {
+    transform: scale(1.15);
+    color: var(--accent);
+  }
 
   .hero {
     text-align: center;
-    padding: 120px 20px 80px;
-    max-width: 720px;
-    margin: 0 auto;
+    padding: 110px 20px 70px;
   }
-
   .hero h1 {
     font-family: 'Fraunces', serif;
-    font-size: 3.2rem;
-    color: #e8d9d4;
-    margin-bottom: 16px;
+    font-size: 3.4rem;
+    color: #f0e4df;
+    margin-bottom: 12px;
   }
-
   .hero p {
-    font-size: 1.1rem;
     color: #b89f9f;
-    max-width: 420px;
-    margin: 0 auto;
+    font-size: 1.15rem;
   }
 
   .hero-img {
     width: 100%;
     max-width: 420px;
-    margin: 60px auto 0;
+    margin: 50px auto 0;
     border-radius: 50%;
     border: 3px solid #3f1320;
-    box-shadow: 0 20px 50px rgba(92,26,43,0.5);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hero-img:hover {
+    transform: scale(1.04) rotate(2deg);
+    box-shadow: 0 30px 60px rgba(194, 38, 62, 0.4);
   }
 
   .section {
@@ -100,10 +97,10 @@
 
   h2 {
     font-family: 'Fraunces', serif;
-    font-size: 2.1rem;
+    font-size: 2.2rem;
     text-align: center;
-    margin-bottom: 50px;
-    color: #e8d9d4;
+    margin-bottom: 60px;
+    color: #f0e4df;
   }
 
   .grid {
@@ -114,18 +111,21 @@
 
   .card {
     background: #2a2022;
-    border-radius: 16px;
+    border-radius: 20px;
     overflow: hidden;
-    transition: transform 0.4s;
+    transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+    border: 1px solid #3f1320;
   }
 
   .card:hover {
-    transform: translateY(-8px);
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(92, 26, 43, 0.45);
   }
 
   .card-media {
     position: relative;
     padding-top: 100%;
+    overflow: hidden;
   }
 
   .card-media img {
@@ -134,16 +134,27 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.7s ease;
   }
 
-  /* Minimalist Black Frame */
+  .card:hover .card-media img {
+    transform: scale(1.12);
+  }
+
+  /* Glittery Black Frame */
   .card-media::after {
     content: '';
     position: absolute;
     inset: 12px;
     border: 2px solid #3f1320;
-    border-radius: 12px;
+    border-radius: 14px;
     z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  .card:hover .card-media::after {
+    border-color: #c8a0a8;
+    box-shadow: 0 0 20px rgba(200, 160, 168, 0.3);
   }
 
   .card-body {
@@ -152,40 +163,41 @@
   }
 
   .price {
-    color: #c8a0a8;
+    color: var(--accent);
     font-weight: 600;
-    margin: 8px 0 16px;
+    margin: 10px 0 18px;
   }
 
   .add-btn {
     width: 100%;
-    padding: 14px;
+    padding: 14px 24px;
     background: transparent;
-    border: 2px solid #c8a0a8;
+    border: 2px solid var(--accent);
     color: #e8d9d4;
     border-radius: 50px;
     font-weight: 500;
     cursor: pointer;
-    transition: 0.3s;
+    transition: all 0.4s ease;
   }
 
   .add-btn:hover {
-    background: #c8a0a8;
+    background: var(--accent);
     color: #1c1618;
+    transform: translateY(-2px);
   }
 
   .cod {
-    font-size: 0.8rem;
-    color: #8c7a7a;
-    margin-top: 8px;
+    font-size: 0.82rem;
+    color: #9c7f7f;
+    margin-top: 10px;
   }
 
   footer {
     text-align: center;
-    padding: 60px 20px 40px;
-    border-top: 1px solid #3f1320;
-    color: #8c7a7a;
+    padding: 70px 20px 40px;
+    color: #9c7f7f;
     font-size: 0.9rem;
+    border-top: 1px solid #3f1320;
   }
 </style>
 </head>
@@ -193,34 +205,34 @@
 
 <header>
   <div class="nav">
-    <button class="icon" id="cartBtn">🛍️</button>
+    <button class="nav-actions" id="cartBtn">🛍️</button>
     <div class="logo">ECLIPSE by MH</div>
-    <button class="icon" id="menuBtn">☰</button>
+    <button class="nav-actions" id="menuBtn">☰</button>
   </div>
 </header>
 
 <section class="hero">
   <h1>Quietly Celestial</h1>
-  <p>Minimalist jewelry inspired by the moon and stars. Handcrafted with intention.</p>
+  <p>Minimal jewelry with a soulful touch</p>
   <img src="https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=900" 
        class="hero-img" alt="Hero">
 </section>
 
 <section class="section">
-  <h2>Signature Pieces</h2>
+  <h2>Signature Collection</h2>
   <div class="grid" id="productGrid"></div>
 </section>
 
 <footer>
   © 2026 Eclipse by MH • Handmade in Pakistan<br>
-  <span style="margin-top:12px;display:block;">Cash on Delivery Available</span>
+  Cash on Delivery Available
 </footer>
 
 <script>
 const products = [
   {id:1, name:"Orbit Armcuff", price:1250, img:"https://eclipsebyms.com/cdn/shop/files/0F2B7AC8-9E0A-4CCD-9B0F-16BB2CAEED77.jpg?v=1782044628&width=800"},
-  {id:2, name:"Lily Butterfly", price:1650, img:"https://eclipsebyms.com/cdn/shop/files/C616A6F5-8FA8-4196-AA2C-17EA030B84B9.jpg?v=1782810113&width=800"},
-  {id:3, name:"Pink Crystal", price:1350, img:"https://eclipsebyms.com/cdn/shop/files/93B3D48E-F2D3-4262-BDC9-56F63A98A599.jpg?v=1772128560&width=800"},
+  {id:2, name:"Lily Butterfly Armcuff", price:1650, img:"https://eclipsebyms.com/cdn/shop/files/C616A6F5-8FA8-4196-AA2C-17EA030B84B9.jpg?v=1782810113&width=800"},
+  {id:3, name:"Pink Crystal Butterfly", price:1350, img:"https://eclipsebyms.com/cdn/shop/files/93B3D48E-F2D3-4262-BDC9-56F63A98A599.jpg?v=1772128560&width=800"},
   {id:4, name:"Starlight Necklace", price:1950, img:"https://eclipsebyms.com/cdn/shop/collections/20ed6f43053e7ac16d71eccdd06d6ff3_e19af08e-3eee-4c22-8f66-eb473d0816bb.jpg?v=1770193026&width=800"}
 ];
 
@@ -251,12 +263,9 @@ window.addToCart = function(id) {
 
 document.getElementById('cartBtn').addEventListener('click', () => {
   if (cart.length === 0) return alert("Your cart is empty.");
-  
-  let message = "Hello! I'd like to order:\n";
-  cart.forEach(item => message += `- ${item.name} (Rs. ${item.price})\n`);
-  message += "\nCash on Delivery please.";
-  
-  window.open(`https://wa.me/923425858425?text=${encodeURIComponent(message)}`, '_blank');
+  let msg = "Hi! My order:\n";
+  cart.forEach(i => msg += `- ${i.name} (Rs. ${i.price})\n`);
+  window.open(`https://wa.me/923425858425?text=${encodeURIComponent(msg)}`, '_blank');
 });
 
 renderProducts();
